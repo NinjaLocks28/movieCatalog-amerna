@@ -43,7 +43,7 @@ module.exports.registerUser = async (req, res) => {
 
         await newUser.save()
 
-        return res.status(201).send({
+        return res.status(200).send({
             message: 'Registered Successfully'
         })
 
