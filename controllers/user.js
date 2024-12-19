@@ -92,3 +92,23 @@ module.exports.loginUser = async (req, res) => {
         errorHandler (err, req, res)
     }
 }
+
+module.exports.getProfile = (req, res) => {
+
+    const userId = req.user.id
+
+    return User.findById(userId)
+    .then(user => {
+        if(!user) {
+            return res.status(404).send({
+                message: 'User not found'
+            })
+        }
+
+        user.password = "";
+        return res.status(200).send({user})
+
+    })
+    .catch(err => errorHandler(err, req, res))
+
+}
