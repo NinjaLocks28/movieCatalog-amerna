@@ -116,7 +116,7 @@ module.exports.deleteMovie = async (req, res) => {
         const result = await Movie.findByIdAndDelete(movieId)
         if(result) {
             return res.status(200).send({
-                message: 'Movie updated successfully'
+                message: 'Movie deleted successfully'
             })
         } else {
             return res.status(404).send({
